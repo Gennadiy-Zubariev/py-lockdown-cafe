@@ -5,15 +5,15 @@ from app.errors import (
 )
 
 
-def go_to_cafe(friends: list, cafe: Cafe) -> None:
+def go_to_cafe(friends: list, cafe: Cafe) -> str:
     count_friends = 0
     masks_to_buy = 0
     for friend in friends:
         try:
             print(cafe.visit_cafe(friend))
             count_friends += 1
-        except VaccineError as e:
-            return str(e)
+        except VaccineError:
+            return "All friends should be vaccinated"
         except NotWearingMaskError:
             masks_to_buy += 1
 
